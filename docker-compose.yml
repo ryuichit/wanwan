@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  user_db:
+    image: mysql:8.0-debian
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /user_db_root_password
+      MYSQL_DATABASE: wanwan
+    volumes:
+      - ./user_db_root_password:/user_db_root_password
+      - ./db/user_db/init:/docker-entrypoint-initdb.d
